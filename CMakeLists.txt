@@ -76,7 +76,7 @@ SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
 SET(CMAKE_SKIP_RPATH FALSE)
 # when building, don't use the install RPATH already
 # (but later on when installing)
-SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE) 
+SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
 SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
@@ -117,7 +117,7 @@ SET(CMAKE_Fortran_FLAGS_TESTING "-mfpmath=sse -msse2")
 SET(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -mfpmath=sse -msse2")
 SET(CMAKE_C_FLAGS_DEBUG "-O0 -g -mfpmath=sse -msse2")
 SET(CMAKE_Fortran_FLAGS_DEBUG "-O0 -g -mfpmath=sse -msse2")
- 
+
 SET(CMAKE_CXX_FLAGS_RELEASE "-O2")
 SET(CMAKE_C_FLAGS_RELEASE "-O2")
 SET(CMAKE_Fortran_FLAGS_RELEASE "-O2")
@@ -139,7 +139,7 @@ include_directories("Src/FuncApprox")
 include_directories("Src/Comm")
 include_directories("Src/Optimizers")
 
-set( PDF_SRC 
+set( PDF_SRC
   "Src/PDFLib/PDFBase.cpp"
   "Src/PDFLib/PDFNormal.cpp"
   "Src/PDFLib/PDFLogNormal.cpp"
@@ -212,7 +212,7 @@ add_executable (psuade-bin Src/Main/Psuade.cpp)
 set (PSUADE_NAME "psuade")
 
 SET_TARGET_PROPERTIES(psuade-bin
-  PROPERTIES 
+  PROPERTIES
   OUTPUT_NAME ${PSUADE_NAME}
   RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
@@ -259,7 +259,7 @@ endif (PARALLEL_BUILD)
 
 # add Bose
 include_directories ("${PROJECT_SOURCE_DIR}/External/Bose")
-add_subdirectory (External/Bose) 
+add_subdirectory (External/Bose)
 set (EXTRA_LIBS ${EXTRA_LIBS} bose)
 
 #APPSPACK IGNORED, IT IS OBSOLETE
@@ -268,11 +268,11 @@ set (EXTRA_LIBS ${EXTRA_LIBS} bose)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/BOBYQA")
   option (USE_BOBYQA
         "Build and use the BOBYQA library." ON)
-endif() 
+endif()
 if (USE_BOBYQA)
   enable_language(Fortran)
   include_directories ("${PROJECT_SOURCE_DIR}/External/BOBYQA")
-  add_subdirectory (External/BOBYQA) 
+  add_subdirectory (External/BOBYQA)
   set (EXTRA_LIBS ${EXTRA_LIBS} bobyqa)
   add_definitions(-DHAVE_BOBYQA)
 endif (USE_BOBYQA)
@@ -281,10 +281,10 @@ endif (USE_BOBYQA)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/COBYLA")
   option (USE_COBYLA
         "Build and use the COBYLA library." ON)
-endif() 
+endif()
 if (USE_COBYLA)
   include_directories ("${PROJECT_SOURCE_DIR}/External/COBYLA")
-  add_subdirectory (External/COBYLA) 
+  add_subdirectory (External/COBYLA)
   set (EXTRA_LIBS ${EXTRA_LIBS} cobyla2c)
   add_definitions(-DHAVE_COBYLA)
 endif (USE_COBYLA)
@@ -293,10 +293,10 @@ endif (USE_COBYLA)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/EARTH")
   option (USE_EARTH
         "Build and use the EARTH library." OFF)
-endif() 
+endif()
 if (USE_EARTH)
   include_directories ("${PROJECT_SOURCE_DIR}/External/EARTH")
-  add_subdirectory (External/EARTH) 
+  add_subdirectory (External/EARTH)
   set (EXTRA_LIBS  earth ${EXTRA_LIBS})
   add_definitions(-DHAVE_EARTH)
 endif (USE_EARTH)
@@ -305,10 +305,10 @@ endif (USE_EARTH)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/GPMC" AND NOT MINGW)
   option (USE_GPMC
         "Build and use the GPMC library." OFF)
-endif() 
+endif()
 if (USE_GPMC)
   include_directories ("${PROJECT_SOURCE_DIR}/External/GPMC")
-  add_subdirectory (External/GPMC) 
+  add_subdirectory (External/GPMC)
   set (EXTRA_LIBS ${EXTRA_LIBS} gpmc)
   add_definitions(-DHAVE_GPMC)
 endif (USE_GPMC)
@@ -317,11 +317,11 @@ endif (USE_GPMC)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/LINCOA")
   option (USE_LINCOA
         "Build and use the LINCOA library." ON)
-endif() 
+endif()
 if (USE_LINCOA)
   enable_language(Fortran)
   include_directories ("${PROJECT_SOURCE_DIR}/External/LINCOA")
-  add_subdirectory (External/LINCOA) 
+  add_subdirectory (External/LINCOA)
   set (EXTRA_LIBS ${EXTRA_LIBS} lincoa)
   add_definitions(-DHAVE_LINCOA)
 endif (USE_LINCOA)
@@ -330,11 +330,11 @@ endif (USE_LINCOA)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/NEWUOA")
   option (USE_NEWUOA
         "Build and use the NEWUOA library." ON)
-endif() 
+endif()
 if (USE_NEWUOA)
   enable_language(Fortran)
   include_directories ("${PROJECT_SOURCE_DIR}/External/NEWUOA")
-  add_subdirectory (External/NEWUOA) 
+  add_subdirectory (External/NEWUOA)
   set (EXTRA_LIBS ${EXTRA_LIBS} newuoa)
   add_definitions(-DHAVE_NEWUOA)
 endif (USE_NEWUOA)
@@ -343,10 +343,10 @@ endif (USE_NEWUOA)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/L-BFGS-B-C")
   option (USE_LBFGS
         "Build and use the LBFGS library." ON)
-endif() 
+endif()
 if (USE_LBFGS)
   include_directories ("${PROJECT_SOURCE_DIR}/External/L-BFGS-B-C")
-  add_subdirectory (External/L-BFGS-B-C) 
+  add_subdirectory (External/L-BFGS-B-C)
   set (EXTRA_LIBS ${EXTRA_LIBS} lbfgs)
   add_definitions(-DHAVE_LBFGS)
 endif (USE_LBFGS)
@@ -355,10 +355,10 @@ endif (USE_LBFGS)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/NOMAD")
   option (USE_NOMAD
         "Build and use the NOMAD library." ON)
-endif() 
+endif()
 if (USE_NOMAD)
   include_directories ("${PROJECT_SOURCE_DIR}/External/NOMAD")
-  add_subdirectory (External/NOMAD) 
+  add_subdirectory (External/NOMAD)
   set (EXTRA_LIBS ${EXTRA_LIBS} nomad)
   add_definitions(-DHAVE_NOMAD)
 endif (USE_NOMAD)
@@ -369,11 +369,11 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/External/MARS")
         "Build and use the MARS library." ON)
 else ()
   add_definitions(-DPSUADE_NO_MARS)
-endif() 
+endif()
 if (USE_MARS)
   enable_language(Fortran)
   include_directories ("${PROJECT_SOURCE_DIR}/External/MARS")
-  add_subdirectory (External/MARS) 
+  add_subdirectory (External/MARS)
   set (EXTRA_LIBS ${EXTRA_LIBS} mars)
   add_definitions(-DHAVE_MARS)
 
@@ -385,10 +385,10 @@ endif (USE_MARS)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/METIS")
   option (USE_METIS
         "Build and use the METIS library." ON)
-endif() 
+endif()
 if (USE_METIS)
   include_directories ("${PROJECT_SOURCE_DIR}/External/METIS/Lib")
-  add_subdirectory (External/METIS) 
+  add_subdirectory (External/METIS)
   set (EXTRA_LIBS ${EXTRA_LIBS} metis)
   add_definitions(-DHAVE_METIS)
 endif (USE_METIS)
@@ -397,11 +397,11 @@ endif (USE_METIS)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/MINPACK")
   option (USE_MINPACK
         "Build and use the MINPACK library." OFF)
-endif() 
+endif()
 if (USE_MINPACK)
   enable_language(Fortran)
   include_directories ("${PROJECT_SOURCE_DIR}/External/MINPACK/Lib")
-  add_subdirectory (External/MINPACK) 
+  add_subdirectory (External/MINPACK)
   set (EXTRA_LIBS ${EXTRA_LIBS} minpack)
   add_definitions(-DHAVE_MINPACK)
 endif (USE_MINPACK)
@@ -411,7 +411,7 @@ endif (USE_MINPACK)
 #if(EXISTS "${PROJECT_SOURCE_DIR}/External/SNNS")
 #  option (USE_SNNS
 #        "Build and use the SNNS library." OFF)
-#endif() 
+#endif()
 #if (USE_SNNS)
 #include_directories ("${PROJECT_SOURCE_DIR}/External/SNNS/kernel/sources")
 #ExternalProject_Add(snns_proj
@@ -423,14 +423,14 @@ endif (USE_MINPACK)
 #    add_definitions(-DHAVE_SNNS)
 #endif(USE_SNNS)
 
-#SVM 
+#SVM
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/SVM")
   option (USE_SVM
         "Build and use the SVM library." OFF)
-endif() 
+endif()
 if (USE_SVM)
   include_directories ("${PROJECT_SOURCE_DIR}/External/SVM/Lib")
-  add_subdirectory (External/SVM) 
+  add_subdirectory (External/SVM)
   set (EXTRA_LIBS ${EXTRA_LIBS} svmlight)
   add_definitions(-DHAVE_SVM)
 endif (USE_SVM)
@@ -439,12 +439,12 @@ endif (USE_SVM)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/TGP/")
   option (USE_TGP
         "Build and use the TGP library." OFF)
-endif() 
+endif()
 if (USE_TGP)
   set(USE_R ON)
   include_directories ("${PROJECT_SOURCE_DIR}/External/TGP/src")
   include_directories ("${PROJECT_SOURCE_DIR}/External/R-2.4.0/nmath")
-  add_subdirectory (External/TGP/src) 
+  add_subdirectory (External/TGP/src)
   set (EXTRA_LIBS tgp ${EXTRA_LIBS})
   add_definitions(-DHAVE_TGP)
 else(USE_TGP)
@@ -455,10 +455,10 @@ endif (USE_TGP)
 if(EXISTS "${PROJECT_SOURCE_DIR}/External/TPROS")
   option (USE_TPROS
         "Build and use the TPROS library." OFF)
-endif() 
+endif()
 if (USE_TPROS)
   include_directories ("${PROJECT_SOURCE_DIR}/External/TPROS/Lib")
-  add_subdirectory (External/TPROS) 
+  add_subdirectory (External/TPROS)
   set (EXTRA_LIBS tpros ${EXTRA_LIBS})
   add_definitions(-DHAVE_TPROS)
 endif (USE_TPROS)
@@ -468,10 +468,10 @@ endif (USE_TPROS)
 #if(EXISTS "${PROJECT_SOURCE_DIR}/External/R-2.4.0/nmath")
 #  option (USE_NMATH
 #        "Build and use the R-2.4.0 NMATH library." OFF)
-#endif() 
+#endif()
 if (USE_R)
   include_directories ("${PROJECT_SOURCE_DIR}/External/R-2.4.0/nmath")
-  add_subdirectory (External/R-2.4.0/nmath) 
+  add_subdirectory (External/R-2.4.0/nmath)
   set (EXTRA_LIBS ${EXTRA_LIBS} nmath)
   add_definitions(-DHAVE_R)
 endif (USE_R)
@@ -489,21 +489,21 @@ endif (USE_R)
 
 find_package(LAPACK)
 if(LAPACK_FOUND AND NOT CMAKE_BUILD_TYPE MATCHES Release AND NOT MINGW)
-  set (EXTRA_LIBS ${EXTRA_LIBS} ${LAPACK_LIBRARIES}) 
+  set (EXTRA_LIBS ${EXTRA_LIBS} ${LAPACK_LIBRARIES})
 else()
   enable_language(Fortran)
   include_directories ("${PROJECT_SOURCE_DIR}/External/Lapack")
-  add_subdirectory (External/Lapack) 
+  add_subdirectory (External/Lapack)
   set (EXTRA_LIBS ${EXTRA_LIBS} lapack)
 endif()
 
 find_package(BLAS)
 if(BLAS_FOUND AND NOT CMAKE_BUILD_TYPE MATCHES Release AND NOT MINGW) #Build blas for windows and release
-  set (EXTRA_LIBS ${EXTRA_LIBS} "${BLAS_LIBRARIES}") 
+  set (EXTRA_LIBS ${EXTRA_LIBS} "${BLAS_LIBRARIES}")
 else()
   enable_language(Fortran)
   include_directories ("${PROJECT_SOURCE_DIR}/External/BLAS")
-  add_subdirectory (External/BLAS) 
+  add_subdirectory (External/BLAS)
   set (EXTRA_LIBS ${EXTRA_LIBS} blas)
 endif()
 
@@ -528,13 +528,13 @@ endif("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
 # Main psuade files installation section
 ###################################################
 # add the install targets
-install (TARGETS psuade-bin psuade-lib 
-	RUNTIME DESTINATION bin
-	LIBRARY DESTINATION lib
-	ARCHIVE DESTINATION lib)
-install (FILES 
-    "${PROJECT_BINARY_DIR}/include/PsuadeCmakeConfig.h"  
-    ${psuade_HDRS}        
+install (TARGETS psuade-bin psuade-lib
+  RUNTIME DESTINATION bin
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib)
+install (FILES
+    "${PROJECT_BINARY_DIR}/include/PsuadeCmakeConfig.h"
+    ${psuade_HDRS}
     DESTINATION include)
 
 #######################################################
@@ -564,7 +564,7 @@ set (CPACK_PACKAGE_CONTACT       "tong10@llnl.gov")
 if("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
   SET(CPACK_GENERATOR NSIS ZIP) #DEB and RPM are also options on appropriate systems
   SET(CPACK_NSIS_MODIFY_PATH ON)
-  SET(CPACK_NSIS_CREATE_ICONS "CreateShortCut '\$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\${PSUADE_NAME}.lnk' '\$INSTDIR\\\\bin\\\\${PSUADE_NAME}.exe'") 
+  SET(CPACK_NSIS_CREATE_ICONS "CreateShortCut '\$SMPROGRAMS\\\\$STARTMENU_FOLDER\\\\${PSUADE_NAME}.lnk' '\$INSTDIR\\\\bin\\\\${PSUADE_NAME}.exe'")
 
 else()
   SET(CPACK_GENERATOR TGZ STGZ) #DEB and RPM are also options on appropriate systems
@@ -572,18 +572,28 @@ endif()
 
 include (CPack)
 
-add_subdirectory (Examples/PDFTest) 
-add_subdirectory (Examples/ARSM) 
+add_subdirectory (Examples/PDFTest)
+add_subdirectory (Examples/ARSM)
 #MARS tests (mostly)
-add_subdirectory (scripts) 
-add_subdirectory (Examples/Bungee) 
-add_subdirectory (Examples/Morris20) 
-add_subdirectory (Examples/MCMCTest) 
+add_subdirectory (scripts)
+add_subdirectory (Examples/Bungee)
+add_subdirectory (Examples/Morris20)
+add_subdirectory (Examples/MCMCTest)
 #BOBYQA
-add_subdirectory (Examples/OptRosenbrockM) 
-add_subdirectory (Examples/MOO) 
+add_subdirectory (Examples/OptRosenbrockM)
+add_subdirectory (Examples/MOO)
 
 #C++ tests (using psuade as a library)
 
 # enable dashboard scripting
 include (CTest)
+
+set( CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_LIST_DIR}/cmake )
+include( UseCython )
+
+add_custom_target( ReplicatePythonSourceTree ALL ${CMAKE_COMMAND} -P
+  ${CMAKE_CURRENT_SOURCE_DIR}/cmake/ReplicatePythonSourceTree.cmake
+  ${CMAKE_CURRENT_BINARY_DIR}
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} )
+
+add_subdirectory( "Src/Samplings" )
